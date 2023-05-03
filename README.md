@@ -16,3 +16,7 @@
 
 **this script use as dependency.**
   - ncurses-bin
+
+### Sopported
+![support](https://shields.io/badge/Supported%20on-Debian%20Based%20Systems-blue.svg?style=plastic)
+
