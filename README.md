@@ -2,18 +2,17 @@
 
 **Script to clean the memory ram of cache or files not used, loaded in ram**
 
-*USE*
+### Use mode
 
-give it permissions to run
+- Give it permissions to run
 
     chmod u+x ramsync.sh
 
-to run this script, execute
+- Run script
 
-    ./ramsync
+    sudo ./ramsync
 
+### Note
 
-**Note:**
-
-this script use as dependency.
-  * ncurses-bin
+**this script use as dependency.**
+  - ncurses-bin
