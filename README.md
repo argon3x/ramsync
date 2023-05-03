@@ -6,11 +6,11 @@
 
 - Give it permissions to run
 
-    chmod u+x ramsync.sh
+        chmod u+x ramsync.sh
 
 - Run script
 
-    sudo ./ramsync
+        sudo ./ramsync
 
 ### Note
 
