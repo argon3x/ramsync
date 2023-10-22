@@ -1,8 +1,8 @@
 #!/bin/bash
 
-### By: Argon3x
-### Supported: Debian Based Systems
-### Version: 2.0
+# By: Argon3x
+# Supported: Debian Based Systems
+# Version: 2.1.0
 
 # Colors
 red="\e[01;31m"; green="\e[01;32m"; blue="\e[01;34m"
@@ -40,20 +40,16 @@ clean_cache_ram(){
     error_handler "An Error Ocurred While Sinchronizing The File System"
   fi
 
-  # Flushing the kernel page cache and the inode and dentry object cache.
+  # Cleaning memory cache an buffer
   echo -e "${box} ${yellow}Clearing the cache${end}\c";
-  for c in $(seq 1 3); do
-    command sudo echo $c > /proc/sys/vm/drop_caches
-    if [[ $? -eq 0 ]]; then
-      echo -e "....\c"
-      if [[ ${c} -eq 3 ]]; then
-        echo -e "${green} done ${end}"
-      fi
-    else
-      echo -e "${red} failed ${end}"
-      error_handler "An Error Ocurred While Clearing The Cache"
-    fi
-  done
+
+  command sudo sysctl -w vm.drop_caches=3
+
+  if [[ $? -eq 0 ]]; then
+    echo -e "${green} done ${end}"
+  else
+    error_handler "An Error Ocurred While Cleaning Of Cache and Buffer"
+  fi
 }
 
 # Checking Execution As Root
@@ -67,8 +63,3 @@ if [[ $(id -u) -eq 0 ]]; then
 else
   error_handler "use: ${green}sudo ./${0##*/}${end}"
 fi
-
-# Clearing the function and variables
-sleep 1
-unset -f clean_cache_ram
-unset red green blue purple yellow end
