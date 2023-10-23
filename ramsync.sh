@@ -2,7 +2,7 @@
 
 # By: Argon3x
 # Supported: Debian Based Systems
-# Version: 2.1.0
+# Version: 2.1.1
 
 # Colors
 red="\e[01;31m"; green="\e[01;32m"; blue="\e[01;34m"
@@ -43,7 +43,7 @@ clean_cache_ram(){
   # Cleaning memory cache an buffer
   echo -e "${box} ${yellow}Clearing the cache${end}\c";
 
-  command sudo sysctl -w vm.drop_caches=3
+  command sudo sysctl -w vm.drop_caches=3 &>/dev/null
 
   if [[ $? -eq 0 ]]; then
     echo -e "${green} done ${end}"
